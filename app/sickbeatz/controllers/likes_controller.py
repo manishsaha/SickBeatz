@@ -2,16 +2,18 @@ from . import *
 
 @sickbeatz.route('/likes', methods = ['GET'])
 def lget():
-  if 'a_name' in request.args:
-    artist = artist_dao.get_artist_name(request.args['a_name'])
-    likers = likes_dao.all_likers(artist)
-    data, error = user_schema.dump(likers, many=True)
-    return jsonify(data)
-  else:
-    user = user_dao.get_user_name(request.args['u_name'])
-    likings = likes.dao.all_likings(user)
-    data, error = artist_schema.dump(likings, many=True)
-    return jsonify(data)
+  try:
+    if 'a_name' in request.args:
+      artist = artists_dao.get_artist_name(request.args['a_name'])
+      likers = likes_dao.all_likers(artist)
+      data, error = user_schema.dump(likers, many=True)
+      return jsonify(data)
+    else:
+      user = users_dao.get_user_name(request.args['u_name'])
+      likings = likes.dao.all_likings(user)
+      data, error = artist_schema.dump(likings, many=True)
+      return jsonify(data)
+  except Exception: return jsonify([])
 
 @sickbeatz.route('/likes', methods = ['POST'])
 def lpost():

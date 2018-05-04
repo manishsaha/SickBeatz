@@ -5,7 +5,7 @@ def all_likers(artist):
   idlst = Like.query(user_id).filter_by(artist_id = _id).all()
   usrlst = []
   for usrid in idlst:
-    usr = user_dao.get_user_id(usrid)
+    usr = users_dao.get_user_id(usrid)
     usrlst.append(usr)
   return usrlst
 
@@ -28,7 +28,7 @@ def delete_like(artist, user):
   elt = Like.query.filter_by(artist_id = artist.id, user_id = user.id).first()
   if elt:
     db.session.delete(elt)
-    db.commit()
+    db.session.commit()
     return True
   else:
     return False
@@ -37,5 +37,5 @@ def delete_likes(user):
   elts = Like.query.filter_by(user_id = user.id).all()
   for elt in elts:
     db.session.delete(elt)
-  db.commit()
+  db.session.commit()
   return True

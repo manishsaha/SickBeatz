@@ -18,12 +18,12 @@ def delete_user(usr):
   elt = User.query.filter_by(id = usr.id).first()
   if elt:
     db.session.delete(elt)
-    db.commit()
+    db.session.commit()
     return True
   else:
     return False
 
 def delete_users():
   User.query.delete()
-  db.commit()
+  db.session.commit()
   return True

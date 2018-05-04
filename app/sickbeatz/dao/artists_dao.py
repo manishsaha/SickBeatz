@@ -7,7 +7,8 @@ def get_artist_id(idd):
   return Artist.query.filter_by(id = idd).first()
 
 def artists_by_name(name):
-  return Artist.query.filter(Artist.name.ilike('%%%s%%', name)).all()
+  name = '%' + name + '%'
+  return Artist.query.filter(Artist.name.ilike(name)).all()
 
 def get_all_artists():
   return Artist.query.all()
@@ -21,7 +22,7 @@ def delete_artist(artist):
   elt = Artist.query.filter_by(id = artist.id).first()
   if elt:
     db.session.delete(elt)
-    db.commit()
+    db.session.commit()
     return True
   else:
     return False
