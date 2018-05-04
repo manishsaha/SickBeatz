@@ -1,7 +1,7 @@
 from . import *
 
 @sickbeatz.route('/likes', methods = ['GET'])
-def get():
+def lget():
   if 'a_name' in request.args:
     artist = artist_dao.get_artist_name(request.args['a_name'])
     likers = likes_dao.all_likers(artist)
@@ -14,7 +14,7 @@ def get():
     return jsonify(data)
 
 @sickbeatz.route('/likes', methods = ['POST'])
-def post():
+def lpost():
   usr = users_dao.get_user_name(request.args['user_name'])
   artist_name = request.args['artist_name']
   artist_genre = request.args['artist_genre']
@@ -25,10 +25,10 @@ def post():
   return jsonify(data)
 
 @sickbeatz.route('/likes', methods = ['DELETE'])
-def delete():
+def ldelete():
   if 'name' in request.args:
     usr = users.dao.get_user_name(request.args['name'])
-    _bool = likes_dao.delete_all_likes()
+    _bool = likes_dao.delete_likes()
     return jsonify({'success': _bool})
   else:
     usr = users_dao.get_user_id(request.args['user_id'])

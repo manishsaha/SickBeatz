@@ -6,7 +6,10 @@ import app
 from app.sickbeatz.models.all import *
 
 # DAO
-from app.sickbeatz.dao import *
+from app.sickbeatz.dao import artists_dao, \
+  users_dao, \
+  likes_dao, \
+  songs_dao
 
 # Serializers
 artist_schema         = ArtistSchema()

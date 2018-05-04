@@ -1,7 +1,7 @@
 from . import *
 
 @sickbeatz.route('/artists', methods = ['GET'])
-def get():
+def aget():
   if 'name' in request.args:
     artists = artists_dao.artists_by_name(request.args['name'])
     data, error = artist_schema.dump(artists, many=True)
@@ -12,7 +12,7 @@ def get():
     return jsonify(data) 
 
 @sickbeatz.route('/artists', methods = ['POST'])
-def post():
+def apost():
     artist = Artist(request.args['name'], request.args['genre'])
     #artist = Artist(**request.args)
     added  = artists_dao.add_artist(artist)
@@ -20,7 +20,7 @@ def post():
     return jsonify({'success': True, 'data': data})
 
 @sickbeatz.route('/artists', methods = ['DELETE'])
-def delete():
+def adelete():
   if 'name' in request.args:
     artist = artist_schema.get_artist_name(request.args['name'])
     _bool = artists_dao.delete_artist(artist)

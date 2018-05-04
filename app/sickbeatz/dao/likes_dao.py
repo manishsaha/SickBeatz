@@ -33,7 +33,7 @@ def delete_like(artist, user):
   else:
     return False
 
-def delete_all_likes(user):
+def delete_likes(user):
   elts = Like.query.filter_by(user_id = user.id).all()
   for elt in elts:
     db.session.delete(elt)
