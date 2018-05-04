@@ -1,0 +1,9 @@
+venv
+*.pyc
+*.env
+node_modules
+migrations
+*.DS_Store
+npm-debug.log
+results
+secret
