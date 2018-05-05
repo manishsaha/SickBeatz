@@ -1,7 +1,7 @@
 from . import *
 
 def get_artist_name(name):
-  return Artist.query.filter_by(name = name).first()
+  return Artist.query.filter(func.lower(Artist.name) == func.lower(name)).first()
 
 def get_artist_id(idd):
   return Artist.query.filter_by(id = idd).first()
@@ -19,13 +19,12 @@ def add_artist(artist):
   return artist
 
 def delete_artist(artist):
-  elt = Artist.query.filter_by(id = artist.id).first()
-  if elt:
+  if artist:
+    elt = get_artist_id(artist.id)
     db.session.delete(elt)
     db.session.commit()
     return True
-  else:
-    return False
+  else: return False
 
 def delete_artists():
   Artist.query.delete()
@@ -39,4 +38,5 @@ def add_ifnotexists(session, model, **kwargs):
   else:
       obj = model(**kwargs)
       session.add(obj)
+      session.commit()
       return obj
