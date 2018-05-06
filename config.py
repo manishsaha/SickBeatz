@@ -1,12 +1,7 @@
 import os
 
 # Database info
-
-DB_HOST = os.environ['DB_HOST']
-DB_NAME = os.environ['DB_NAME']
-
-DATABASE_URL = 'postgresql://{}/{}'.format(DB_HOST, DB_NAME)
-
+DATABASE_URL = os.environ['DATABASE_URL']
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Different environments for the app to run in

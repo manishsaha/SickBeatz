@@ -1,0 +1,7 @@
+flask:
+    image: manishsaha/sickbeatz_img:latest
+    ports:
+      - "5000:5000"
+    environment:
+    - APP_SETTINGS=config.DevelopmentConfig
+    - DATABASE_URL=35.229.91.2
