@@ -9,4 +9,4 @@ ADD manage.py /service/manage.py
 ADD requirements.txt /service/requirements.txt
 WORKDIR /service/
 RUN pip install -r requirements.txt
-CMD python -u run.py $APP_SETTINGS $DB_URL
+CMD python -u run.py $APP_SETTINGS $DATABASE_URL
