@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: manishsaha/sickbeatz_img:latest
+        image: manishsaha/sickbeatz_img:v1
         env:
         - name: APP_SETTINGS
           value: config.DevelopmentConfig

@@ -1,5 +1,5 @@
 flask:
-    image: manishsaha/sickbeatz_img:latest
+    image: manishsaha/sickbeatz_img:v1
     ports:
       - "5000:5000"
     environment:
