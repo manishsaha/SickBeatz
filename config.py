@@ -3,7 +3,6 @@ import os
 # Database info
 DATABASE_URL = os.environ['DATABASE_URL']
 basedir = os.path.abspath(os.path.dirname(__file__))
-
 # Different environments for the app to run in
 
 class Config(object):
